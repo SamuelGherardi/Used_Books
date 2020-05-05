@@ -1,0 +1,101 @@
+﻿@page
+@model Used_Books.Pages.Eventi.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Used Books</h1>
+<p>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
+<form>
+    <p>
+        Corso di Studi: <select asp-for="StudyCourse" asp-items="Model.Courses">
+            <option value="">All</option>
+        </select>
+
+        Classe: <select asp-for="BookClass" asp-items="Model.Classes">
+            <option value="">All</option>
+        </select>
+
+        Materia: <select asp-for="BookSubject" asp-items="Model.Subjects">
+            <option value="">All</option>
+        </select>
+
+        Studente: <select asp-for="BookStudent" asp-items="Model.Students">
+            <option value="">All</option>
+        </select>
+        <input type="submit" value="Filter" />
+    </p>
+    <p>
+
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].ISBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Editore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Corso_studio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Classe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Materia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Studente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Prezzo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Book)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Editore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Corso_studio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Classe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Materia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Studente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prezzo)
+            </td>
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.id">Reservation</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

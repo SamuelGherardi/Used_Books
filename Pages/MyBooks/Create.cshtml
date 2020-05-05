@@ -1,0 +1,73 @@
+﻿@page
+@model Used_Books.Pages.MyBooks.CreateModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Create";
+    var user = await UserManager.GetUserAsync(User);
+    string student = user.ToString();
+}
+
+<h1>Create</h1>
+
+<h4>Book</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Book.ISBN" class="control-label"></label>
+                <input asp-for="Book.ISBN" class="form-control" />
+                <span asp-validation-for="Book.ISBN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Nome" class="control-label"></label>
+                <input asp-for="Book.Nome" class="form-control" />
+                <span asp-validation-for="Book.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Editore" class="control-label"></label>
+                <input asp-for="Book.Editore" class="form-control" />
+                <span asp-validation-for="Book.Editore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Corso_studio" class="control-label"></label>
+                <input asp-for="Book.Corso_studio" class="form-control" />
+                <span asp-validation-for="Book.Corso_studio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Classe" class="control-label"></label>
+                <input asp-for="Book.Classe" class="form-control" />
+                <span asp-validation-for="Book.Classe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Materia" class="control-label"></label>
+                <input asp-for="Book.Materia" class="form-control" />
+                <span asp-validation-for="Book.Materia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Studente" class="control-label"></label>
+                <input asp-for="Book.Studente" class="form-control" value="@student" readonly="readonly" />
+                <span asp-validation-for="Book.Studente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Prezzo" class="control-label"></label>
+                <input asp-for="Book.Prezzo" class="form-control" />
+                <span asp-validation-for="Book.Prezzo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

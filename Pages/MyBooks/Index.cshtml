@@ -1,0 +1,78 @@
+﻿@page
+@model Used_Books.Pages.MyBooks.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>My Books</h1>
+
+<p>
+<a asp-page="Create">Insert New Book</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].ISBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Editore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Corso_studio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Classe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Materia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Studente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Prezzo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Book)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Editore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Corso_studio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Classe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Materia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Studente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prezzo)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
